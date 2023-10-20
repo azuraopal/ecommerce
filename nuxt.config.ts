@@ -1,11 +1,21 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  app: {
+    head: {
+      link: [
+        {
+          rel: "stylesheet", href:
+            "https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+        }
+      ],
+    }
+  },
   devtools: { enabled: true },
-  modules: ['@nuxtjs/tailwindcss', '@vite-pwa/nuxt'],   
+  modules: ['@nuxtjs/tailwindcss', '@vite-pwa/nuxt'],
 
-  tailwindcss : {
+  tailwindcss: {
     cssPath: "~/assets/css/tailwind.css",
-    configPath: "~/tailwind.config.ts",     
+    configPath: "~/tailwind.config.ts",
   },
 
   pwa: {
@@ -61,8 +71,8 @@ export default defineNuxtConfig({
         },
       ]
     },
-      devOptions: {
-        enabled: true,
-      }
+    devOptions: {
+      enabled: true,
+    }
   }
 })
