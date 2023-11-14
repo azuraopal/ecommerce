@@ -22,23 +22,23 @@ const removeCart = (id: number) => {
 </script>
 
 <template>
-  <div class="w-[70%]">
+  <div class="w-[68%]">
     <div
-      class="flex justify-between items-center pb-7 border-b border-gray- 300 mb-6"
+      class="flex justify-between items-center pb-5 border-b border-gray 300 mb-5"
     >
-      <h1 class="text-3xl font-medium">Shopping Cart</h1>
+      <h1 class="text-3xl ml-3 font-medium">Your Cart</h1>
       <p class="text-3xl font-medium">{{ products.length }} Items</p>
     </div>
     <div v-if="products.length > 0" class="flex flex-col gap-6">
-        <template v-for="(item, index) in products" :key="index">
-            <CardsCardCart :product="item" @removeCart="removeCart"/>
-        </template>
+      <template v-for="(item, index) in products" :key="index">
+        <CardsCardCart :product="item" @removeCart="removeCart" />
+      </template>
     </div>
     <div v-else>
-      <h5 class="text-xl font-light text-center">Cart is empty</h5>
+      <h5 class="text-xl font-bold text-center">Cart is empty</h5>
     </div>
   </div>
-  <div class="w-[30%] bg-white shadow-xl h-max p-6">
+  <div class="w-[26%] bg-white shadow-xl h-max p-6">
     <h3 class="text-xl font-medium mb-6">Order Summary</h3>
     <div class="flex flex-col gap-3 border-b border-gray-300 pb-4">
       <div v-if="products.length > 0">
