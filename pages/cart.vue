@@ -1,24 +1,26 @@
 <script lang="ts" setup>
 import type { Products } from "~/types/products";
+
+definePageMeta({
+middleware: ["user-access"]
+});
+
 const products = ref<Products[]>([]);
 const totalPrice = computed(() => {
-  return products.value
-    .filter((product) => product.price !== undefined)
-    .reduce(
-      (accumulator, currentValue) => accumulator + currentValue.price!,
-      0
-    );
+  return products.value.filter((product) => product.price !== undefined).reduce((accumulator, currentValue) => accumulator + currentValue.price!,0);
 });
+
 onMounted(() => {
   let localStorageData = localStorage.getItem("products");
   if (localStorageData) {
     products.value = JSON.parse(localStorageData);
   }
-});
+})
+
 const removeCart = (id: number) => {
   products.value = products.value.filter((item) => item.id !== id);
   localStorage.setItem("products", JSON.stringify(products.value));
-};
+}
 </script>
 
 <template>
